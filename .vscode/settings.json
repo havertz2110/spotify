@@ -1,0 +1,8 @@
+{
+    "liveServer.settings.port": 5501,
+    "files.associations": {
+        "xlocale": "cpp"
+    },
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/f8a4371b-f57a-4912-a8cf-63562508fc90/resourceGroups/scopifytest/providers/Microsoft.Web/sites/scopifytest",
+    "appService.deploySubpath": "."
+}

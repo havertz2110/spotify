@@ -1,0 +1,155 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scopyfy Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background-color: #121212;
+        }
+
+        .container {
+            background-color: #121212;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #1ed760;
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        .input-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .input-container input {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .button {
+            background-color: #1ed760;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #1abc9c;
+        }
+
+        .options {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .options a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .options a:hover {
+            text-decoration: underline;
+        }
+
+        .social-login {
+            margin-top: 20px;
+        }
+
+        .social-login a {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 10px;
+            border-radius: 3px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .social-login a:nth-child(1) {
+            background-color: #4285f4;
+        }
+
+        .social-login a:nth-child(2) {
+            background-color: #3b5998;
+        }
+
+        .social-login a:nth-child(3) {
+            background-color: white;
+        }
+
+        .login {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #888;
+        }
+
+        .small-text {
+            font-size: 12px;
+            color: grey;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="logo">Scopyfy</h1>
+        <h2 class="title">Sign up to start listening</h2>
+        <form class="input-container" action="http://scopify:80/register" method="post">                 
+                             
+            <input class="box" type="text" name="name" id="name"
+            placeholder="Name"  required /><br>
+                             
+            <input class="box" type="email" name="email" id="email"
+            placeholder="E-Mail " required /><br>
+                      
+            <input class="box" type="text" name="phone" id="phone" 
+            placeholder="Phone Number " required/><br>
+            
+            <input class="box" type="password" name="password"
+            id="password" placeholder="Password " required/><br>
+                             
+            
+
+            <input type="submit" id="submitDetails" 
+            name="submitDetails" value="Submit" /><br>
+                     
+        </form>
+        <div class="login">Already have an account? <a href="/login">Log in here</a></div>
+        <p class="small-text">By clicking "Submit", you agree to Spotify's <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.</p>
+    </div>
+</body>
+
+    
