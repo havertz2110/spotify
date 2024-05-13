@@ -1,7 +1,249 @@
-// Filename - views/home.ejs
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<h1>This is home page</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Scopify</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/stylesforhome.css"/>
+  </head>
 
-<li><a href="/register">Sign up!!</a></li>
-<li><a href="/login">Login</a></li>
+  <body>
+    <div class="App">
+      <div class="App__top-bar">
+        <div class="App__header">
+          <div class="App__song-navigation">
+            <div class="App__song-navigation-prev">
+              <svg role="img" focusable="false" height="24" width="24" viewBox="0 0 24 24"><polyline points="16 4 7 12 16 20" fill="none" stroke="#fff"></polyline></svg>
+            </div>
+            <div class="App__song-navigation-next">
+              <svg role="img" focusable="false" height="24" width="24" viewBox="0 0 24 24"><polyline points="8 4 17 12 8 20" fill="none" stroke="#fff"></polyline></svg>
+            </div>
+          </div>
 
+
+
+          <!-- <button class="App__user">
+            <div class="App__figure">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 18 20" xmlns="http://www.w3.org/2000/svg" data-testid="user-icon"><path d="M15.216 13.717L12 11.869C11.823 11.768 11.772 11.607 11.757 11.521C11.742 11.435 11.737 11.267 11.869 11.111L13.18 9.57401C14.031 8.58001 14.5 7.31101 14.5 6.00001V5.50001C14.5 3.98501 13.866 2.52301 12.761 1.48601C11.64 0.435011 10.173 -0.0879888 8.636 0.0110112C5.756 0.198011 3.501 2.68401 3.501 5.67101V6.00001C3.501 7.31101 3.97 8.58001 4.82 9.57401L6.131 11.111C6.264 11.266 6.258 11.434 6.243 11.521C6.228 11.607 6.177 11.768 5.999 11.869L2.786 13.716C1.067 14.692 0 16.526 0 18.501V20H1V18.501C1 16.885 1.874 15.385 3.283 14.584L6.498 12.736C6.886 12.513 7.152 12.132 7.228 11.691C7.304 11.251 7.182 10.802 6.891 10.462L5.579 8.92501C4.883 8.11101 4.499 7.07201 4.499 6.00001V5.67101C4.499 3.21001 6.344 1.16201 8.699 1.00901C9.961 0.928011 11.159 1.35601 12.076 2.21501C12.994 3.07601 13.5 4.24301 13.5 5.50001V6.00001C13.5 7.07201 13.117 8.11101 12.42 8.92501L11.109 10.462C10.819 10.803 10.696 11.251 10.772 11.691C10.849 12.132 11.115 12.513 11.503 12.736L14.721 14.585C16.127 15.384 17.001 16.884 17.001 18.501V20H18.001V18.501C18 16.526 16.932 14.692 15.216 13.717Z" fill="#fff"></path></svg>
+            </div>
+            <span class="App__username">Tâm Anh</span>
+          </button> -->
+
+          <div class="user-info">
+            <a style="font-size: 18px; padding-right: 20px; color: white; text-decoration: none;" href="/register">Sign up</a>
+            <a style="font-size: 18px; padding-right: 20px; color: white; text-decoration: none;" href="/login">Log in</a>
+          </div>
+
+
+
+        </div>
+      </div>
+<div style="padding-bottom: 0px;" class="App__nav-bar">
+    <div class="App__logo">
+        <svg viewBox="0 0 254 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Your existing SVG path or other elements go here -->
+            <text x="50%" y="50%" font-family="Arial" font-size="24" font-weight="bold" fill="white" text-anchor="middle">Scopify</text>
+        </svg>
+    </div>
+        <div class="App__categories-nav">
+          <div class="App__category-item App__category-item--selected">
+            <div class="icon"><svg viewBox="0 0 576 512" width="100" title="home">
+      <path d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z" fill="#fff"/>
+    </svg></div>
+            <span>Home</span>
+          </div>
+          <div class="App__category-item">
+            <div class="icon"><svg viewBox="0 0 512 512" width="100" title="search">
+      <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" fill="#C4C4C4"/>
+    </svg></div>
+            <span>Search</span>
+          </div>
+          <!-- <div class="App__category-item">
+            <div class="icon"><svg width="112" height="111" viewBox="0 0 112 111" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="8" height="111" fill="#C4C4C4"/>
+    <rect x="24" width="8" height="111" fill="#C4C4C4"/>
+    <rect width="7.96484" height="111.503" transform="matrix(0.869849 -0.493319 0.506711 0.862116 48 14.7345)" fill="#C4C4C4"/>
+    </svg>
+    </div>
+            <span>Your Library</span>
+          </div> -->
+        </div>
+        <div class="App__playlists-nav">
+          <div class="App__category-item">
+            <div class="icon"><svg role="img" height="12" width="12" aria-hidden="true" viewBox="0 0 16 16" fill="#c4c4c4"><path d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path><path fill="none" d="M0 0h16v16H0z"></path></svg>
+    </div>
+            <span>Create Playlist</span>
+          </div>
+          <div class="App__category-item">
+            <div class="icon"><svg role="img" height="12" width="12" aria-hidden="true" viewBox="0 0 16 16"><path fill="none" d="M0 0h16v16H0z"></path><path d="M13.797 2.727a4.057 4.057 0 00-5.488-.253.558.558 0 01-.31.112.531.531 0 01-.311-.112 4.054 4.054 0 00-5.487.253c-.77.77-1.194 1.794-1.194 2.883s.424 2.113 1.168 2.855l4.462 5.223a1.791 1.791 0 002.726 0l4.435-5.195a4.052 4.052 0 001.195-2.883 4.057 4.057 0 00-1.196-2.883z" fill="#c4c4c4"></path></svg>
+    </div>
+            <span>Liked Songs</span>
+          </div>
+          <div class="App__category-item">
+            <div class="icon"><svg role="img" width="12" height="12" viewBox="0 0 527 483" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 264.208C1.5 119.17 118.974 1.5 264 1.5C409.026 1.5 526.5 119.17 526.5 264.208C526.5 351.905 483.535 429.569 417.628 477.247C406.996 484.938 392.595 481.729 385.684 471.362L376.758 457.971C369.699 447.382 372.818 433.617 382.485 426.529C432.426 389.914 464.783 330.851 464.783 264.208C464.783 153.128 374.839 63.1707 264 63.1707C153.161 63.1707 63.2173 153.128 63.2173 264.208C63.2173 330.851 95.5742 389.914 145.515 426.529C155.182 433.617 158.301 447.382 151.242 457.971L142.316 471.362C135.405 481.729 121.004 484.938 110.372 477.247C44.4653 429.569 1.5 351.905 1.5 264.208Z" fill="#1ED760"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M104.5 263.216C104.5 174.586 175.78 102.5 264 102.5C352.22 102.5 423.5 174.586 423.5 263.216C423.5 315.346 398.84 361.707 360.685 391.048C350.27 399.057 336.041 395.66 329.404 385.602L323.251 376.279C316.458 365.986 319.652 353.018 328.353 346.12C352.699 326.817 368.307 296.878 368.307 263.216C368.307 204.912 321.476 157.884 264 157.884C206.524 157.884 159.693 204.912 159.693 263.216C159.693 296.878 175.301 326.817 199.647 346.12C208.348 353.018 211.542 365.986 204.749 376.279L198.596 385.602C191.959 395.66 177.73 399.057 167.315 391.048C129.16 361.707 104.5 315.346 104.5 263.216Z" fill="#1ED760"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M200.5 261C200.5 226.296 229.118 198.5 264 198.5C298.882 198.5 327.5 226.296 327.5 261C327.5 295.704 298.882 323.5 264 323.5C229.118 323.5 200.5 295.704 200.5 261Z" fill="#1ED760"></path></svg>
+    </div>
+<span>Shazam</span>
+          </div>
+          <div class="App__category-item">
+            <div class="icon"><svg role="img" width="12" height="12" viewBox="0 0 527 483" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 264.208C1.5 119.17 118.974 1.5 264 1.5C409.026 1.5 526.5 119.17 526.5 264.208C526.5 351.905 483.535 429.569 417.628 477.247C406.996 484.938 392.595 481.729 385.684 471.362L376.758 457.971C369.699 447.382 372.818 433.617 382.485 426.529C432.426 389.914 464.783 330.851 464.783 264.208C464.783 153.128 374.839 63.1707 264 63.1707C153.161 63.1707 63.2173 153.128 63.2173 264.208C63.2173 330.851 95.5742 389.914 145.515 426.529C155.182 433.617 158.301 447.382 151.242 457.971L142.316 471.362C135.405 481.729 121.004 484.938 110.372 477.247C44.4653 429.569 1.5 351.905 1.5 264.208Z" fill="#1ED760"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M104.5 263.216C104.5 174.586 175.78 102.5 264 102.5C352.22 102.5 423.5 174.586 423.5 263.216C423.5 315.346 398.84 361.707 360.685 391.048C350.27 399.057 336.041 395.66 329.404 385.602L323.251 376.279C316.458 365.986 319.652 353.018 328.353 346.12C352.699 326.817 368.307 296.878 368.307 263.216C368.307 204.912 321.476 157.884 264 157.884C206.524 157.884 159.693 204.912 159.693 263.216C159.693 296.878 175.301 326.817 199.647 346.12C208.348 353.018 211.542 365.986 204.749 376.279L198.596 385.602C191.959 395.66 177.73 399.057 167.315 391.048C129.16 361.707 104.5 315.346 104.5 263.216Z" fill="#1ED760"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M200.5 261C200.5 226.296 229.118 198.5 264 198.5C298.882 198.5 327.5 226.296 327.5 261C327.5 295.704 298.882 323.5 264 323.5C229.118 323.5 200.5 295.704 200.5 261Z" fill="#1ED760"></path></svg>
+    </div>
+            <span>Your Episodes</span>
+          </div>
+        </div>
+        <div class="App__divider-container"><hr></div>
+      </div>
+
+      <div style="max-height: 100vh;" class="App__main-view">
+        <div class="App__top-gradient"></div>
+        <div class="App__header-placeholder"></div>
+        <section class="App__section App__quick-links">
+          <h1>Polular Artists</h1>
+          <div class="App__quick-links-container">
+            <div class="App__quick-link">
+              <img class="App__quick-link-featured-img" src="https://yt3.googleusercontent.com/v-fHSvLthvdRlrtXeEbWc1JtuKPa7yUeG668kRdxbX6XAxcw_rlhf8wjRGxht_oepo49SkwnXA=s900-c-k-c0x00ffffff-no-rj" alt="Sơn Tùng M-TP"></img>
+              <span>Sơn Tùng M-TP</span>
+            </div>
+            <div class="App__quick-link">
+              <img class="App__quick-link-featured-img" src="https://imageio.forbes.com/specials-images/imageserve/653fcd49893eb27774ba7ecc/65th-GRAMMY-Awards---Arrivals/960x0.jpg?format=jpg&width=1440" alt="Taylor Swift"></img>
+              <span>Taylor Swift</span>
+            </div>
+            <div class="App__quick-link">
+              <img class="App__quick-link-featured-img" src="https://yt3.googleusercontent.com/91tYSvIKKPMqGizr35PFRhUcgGY8K86po-1YmVyd_iDI4S6RB_2ogiBboD9n0tlgKZZ8n_rEQw=s900-c-k-c0x00ffffff-no-rj" alt="Wren Evans"></img>
+              <span>Wren Evans</span>
+            </div>
+            <div class="App__quick-link">
+              <img class="App__quick-link-featured-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmv7_vwRoeubt3OD36jFcXyi12hbCijxankYOhDxq7bg&s" alt="HIEUTHUHAI"></img>
+              <span>HIEUTHUHAI</span>
+            </div>
+            <div class="App__quick-link">
+              <img class="App__quick-link-featured-img" src="https://product.hstatic.net/1000304920/product/ariana-grande-eternal-sunshine-dia-cd_ef8a89810f5441c1a02bf0072960e4a9_grande.jpg" alt="Ariana Grande"></img>
+              <span>Ariana Grande</span>
+            </div>
+            <div class="App__quick-link">
+              <img class="App__quick-link-featured-img" src="https://images2.thanhnien.vn/528068263637045248/2023/3/5/unnamed-1-1678002323700889096984.jpg" alt="GREY D"></img>
+              <span>GREY D</span>
+            </div>
+          </div>
+        </section>
+
+                <section class="App__section App__your-shows">
+          <div class="App__section-header">
+            <h3>Popular Albums</h3>
+            <span>SEE ALL</span>
+          </div>
+
+          <div class="App__section-grid-container">
+            <div class="App__section-grid-item">
+              <div class="featured-image"></div>
+              <h3>THE TORTURED POETS DEPARTMENT</h3>
+              <span>Taylor Swift</span>
+            </div>
+       
+            <div class="App__section-grid-item">
+              <div class="featured-image"></div>
+              <h3>eternal sunshine</h3>
+              <span>Ariana Grande</span>
+            </div>
+
+            <div class="App__section-grid-item">
+                <div class="featured-image"></div>
+                <h3>Planet Money</h3>
+                <span>NPR</span>
+              </div>
+              <div class="App__section-grid-item">
+                <div class="featured-image"></div>
+                <h3>How I Built this...</h3>
+                <span>NPR</span>
+              </div>
+      
+        <!-- <span>The Washington Post</span> -->
+            </div>
+            
+        </section>
+        <button id="fetchTopTracksBtn">Fetch Top Tracks</button>
+      </div>
+    </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const pauseButton = document.getElementById('pauseBtn');
+    const audioPlayer = new Audio('songs/Attention- Charlie Puth.mp3');
+    const currentTimeDisplay = document.getElementById('currentTime');
+    const totalDurationDisplay = document.getElementById('totalDuration');
+    const progressBar = document.getElementById('progressBar');
+    const progressBarContainer = document.querySelector('.progress-bar-container');
+
+  pauseButton.addEventListener('click', function() {
+        if (isPlaying) {
+            audioPlayer.pause();
+        } else {
+            audioPlayer.play();
+        }
+        isPlaying = !isPlaying; // Toggle isPlaying flag
+        updateButtonAppearance(); // Update button appearance based on play/pause state
+    });
+
+    // Function to update button appearance based on play/pause state
+    function updateButtonAppearance() {
+        pauseButton.classList.toggle('active', isPlaying);
+    }
+
+	let isPlaying = false; // Initially audio is not playing
+    audioPlayer.addEventListener('timeupdate', function() {
+        const currentTime = Math.floor(audioPlayer.currentTime);
+        const duration = Math.floor(audioPlayer.duration);
+        const currentMinutes = Math.floor(currentTime / 60);
+        const currentSeconds = currentTime % 60;
+        const durationMinutes = Math.floor(duration / 60);
+        const durationSeconds = duration % 60;
+        const formattedCurrentTime = currentMinutes + ':' + (currentSeconds < 10 ? '0' : '') + currentSeconds;
+        const formattedTotalDuration = durationMinutes + ':' + (durationSeconds < 10 ? '0' : '') + durationSeconds;
+        currentTimeDisplay.textContent = formattedCurrentTime;
+        totalDurationDisplay.textContent = formattedTotalDuration;
+
+        const progress = (currentTime / duration) * 100;
+        progressBar.style.width = progress + '%';
+    });
+
+    progressBarContainer.addEventListener('click', function(event) {
+        const clickX = event.pageX - this.offsetLeft; // Calculate the position of the click relative to the progress bar container
+        const progressBarWidth = this.offsetWidth;
+        const clickPercentage = (clickX / progressBarWidth);
+        const newTime = clickPercentage * audioPlayer.duration;
+        audioPlayer.currentTime = newTime;
+
+    
+    });
+    const fetchTopTracksBtn = document.getElementById('fetchTopTracksBtn');
+      fetchTopTracksBtn.addEventListener('click', async () => {
+        try {
+          const topTracks = await getTopTracks();
+          displayTopTracks(topTracks);
+        } catch (error) {
+          console.error('Error fetching top tracks:', error);
+        }
+      });
+
+      // Function to display top tracks
+      function displayTopTracks(tracks) {
+        const topTracksContainer = document.createElement('div');
+        topTracksContainer.classList.add('top-tracks');
+
+        tracks.forEach(track => {
+          const trackElement = document.createElement('div');
+          trackElement.classList.add('track');
+          trackElement.innerHTML = `
+            <div class="track-name">${track.name}</div>
+            <div class="track-artists">${track.artists.map(artist => artist.name).join(', ')}</div>
+          `;
+          topTracksContainer.appendChild(trackElement);
+        });
+
+        // Append the top tracks container to the document
+        document.body.appendChild(topTracksContainer);
+      }
+});
+
+
+</script>
+</body>
+</html>
