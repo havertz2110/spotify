@@ -44,8 +44,9 @@
   padding-bottom: var(--now-playing-bar-height);
 }
 .App__logo {
-  display: grid;
-  place-items: center;
+  width: 10vw;
+  margin-bottom: 2rem;
+  margin-left: 2rem;
 }
 .App__categories-nav {
   color: #c4c4c4;
