@@ -87,6 +87,27 @@
         .signup a:hover {
             color: #1ED760;
         }
+        .button{
+            width: 250px;
+            height: 40px;
+            margin: 10px auto;
+            justify-content: center;
+            display: block;
+            color: #fff;
+            background: #1ED760;
+            font-size: 1em;
+            font-weight: bold;
+            margin-top: 20px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: .5s ease-in-out;
+        }
+
+        .button:hover {
+            background-color: #1abc9c;
+        }
     </style>
 </head>
 <body>
@@ -99,7 +120,7 @@
 
             <input type="password" name="password"
                 placeholder="password">
-            <button>login</button>
+            <button class="button">login</button>
         </form>
         <!--<a href="#" class="forgot-password">Quên mật khẩu?</a>-->
         <div class="signup">Don't have an account? <a href="/register">Sign up here</a></div>
