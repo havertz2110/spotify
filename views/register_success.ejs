@@ -2,35 +2,105 @@
 <html>
 <head>
 	<title> Signup Form</title>
-<link rel="stylesheet"
-href=
-"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-integrity=
-"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-crossorigin="anonymous">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #121212;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 400px;
+            text-align: center;
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #1ed760;
+        }
+        .logo img {
+            width: 100px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border: none;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            outline: none;
+            justify-content: center;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 25px;
+            background-color: #1DB954;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            justify-content: center;
+        }
+        input[type="submit"]:hover {
+            background-color: #1ED760;
+        }
+        .forgot-password {
+            margin-top: 10px;
+            text-decoration: none;
+            color: #888;
+            font-size: 14px;
+        }
+        .forgot-password:hover {
+            color: #555;
+        }
+        .signup {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #888;
+        }
+        .signup a {
+            color: #1DB954;
+            text-decoration: none;
+        }
+        .signup a:hover {
+            color: #1ED760;
+        }
+    </style>
 </head>
-	<body>
-	<br>
-	<br>
-	<br>
-	<div class="container" >
-		<div class="row">
-		<div class="col-md-3">
-		</div>
-				
-		<div class="col-md-6 main">
-					
-			<h1> Signup Successful</h1>
-					
-		</div>
-				
-				
-		<div class="col-md-3">
-		</div>
-				
-		</div>
-	</div>
+<body>
+    <div class="container">
+        <h1 class="logo">Scopify</h1>
+		<h2>Sign up successfull!</h2>
+        <h2>Please, Log in to enter Scopify</h2>
+        <form action="/login" method="POST">
+            <input type="text" name="name"  id="name"
+                placeholder="name" required>
+
+            <input type="password" name="password"
+                placeholder="password">
+            <button>login</button>
+        </form>
+        <!--<a href="#" class="forgot-password">Quên mật khẩu?</a>-->
+        <div class="signup">Don't have an account? <a href="/register">Sign up here</a></div>
+    </div>
 </body>
 </html>
+
