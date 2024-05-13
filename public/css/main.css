@@ -90,7 +90,8 @@
   background-color: #121212;
   position: relative;
   z-index: 1;
-  max-height: calc(100vh - var(--now-playing-bar-height));
+  max-height: calc(100vh);
+   /* - var(--now-playing-bar-height)); */
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: none;
