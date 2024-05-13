@@ -148,6 +148,7 @@
           </div>   
           <div class="App__section-grid-item">
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO3FbsUG?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcsaYbfSVQu5?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6AO1D5zV7YbsGPUEy09Bwg?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2XT8IQUW3S9vyYKauILhoP?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0W29VhunJ4cBlhz7gG5YDJ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -156,71 +157,7 @@
         </section>
       </div>
     </div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const pauseButton = document.getElementById('pauseBtn');
-    const audioPlayer = new Audio('songs/Attention- Charlie Puth.mp3');
-    const currentTimeDisplay = document.getElementById('currentTime');
-    const totalDurationDisplay = document.getElementById('totalDuration');
-    const progressBar = document.getElementById('progressBar');
-    const progressBarContainer = document.querySelector('.progress-bar-container');
-
-  pauseButton.addEventListener('click', function() {
-        if (isPlaying) {
-            audioPlayer.pause();
-        } else {
-            audioPlayer.play();
-        }
-        isPlaying = !isPlaying; // Toggle isPlaying flag
-        updateButtonAppearance(); // Update button appearance based on play/pause state
-    });
-
-    // Function to update button appearance based on play/pause state
-    function updateButtonAppearance() {
-        pauseButton.classList.toggle('active', isPlaying);
-    }
-
-	let isPlaying = false; // Initially audio is not playing
-    audioPlayer.addEventListener('timeupdate', function() {
-        const currentTime = Math.floor(audioPlayer.currentTime);
-        const duration = Math.floor(audioPlayer.duration);
-        const currentMinutes = Math.floor(currentTime / 60);
-        const currentSeconds = currentTime % 60;
-        const durationMinutes = Math.floor(duration / 60);
-        const durationSeconds = duration % 60;
-        const formattedCurrentTime = currentMinutes + ':' + (currentSeconds < 10 ? '0' : '') + currentSeconds;
-        const formattedTotalDuration = durationMinutes + ':' + (durationSeconds < 10 ? '0' : '') + durationSeconds;
-        currentTimeDisplay.textContent = formattedCurrentTime;
-        totalDurationDisplay.textContent = formattedTotalDuration;
-
-        const progress = (currentTime / duration) * 100;
-        progressBar.style.width = progress + '%';
-    });
-
-    progressBarContainer.addEventListener('click', function(event) {
-        const clickX = event.pageX - this.offsetLeft; // Calculate the position of the click relative to the progress bar container
-        const progressBarWidth = this.offsetWidth;
-        const clickPercentage = (clickX / progressBarWidth);
-        const newTime = clickPercentage * audioPlayer.duration;
-        audioPlayer.currentTime = newTime;
-
-    
-    });
-    const fetchTopTracksBtn = document.getElementById('fetchTopTracksBtn');
-      fetchTopTracksBtn.addEventListener('click', async () => {
-        try {
-          const topTracks = await getTopTracks();
-          displayTopTracks(topTracks);
-        } catch (error) {
-          console.error('Error fetching top tracks:', error);
-        }
-      });
-
-    
-});
-
-
-</script>
+<script></script>
   </body>
 </html>
 <li><a href="/payment">Payment</a></li>
