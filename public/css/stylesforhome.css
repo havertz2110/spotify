@@ -56,6 +56,11 @@
   background-color: rgba(50, 50, 50, 0.6);
   border-radius: 5px;
 }
+.App__category-item:hover {
+  color: #fff;
+  background-color: rgba(50, 50, 50, 0.6);
+  border-radius: 5px;
+}
 .App__category-item {
   padding: 5px 16px;
   display: flex;

@@ -164,84 +164,18 @@
       </div>
     </div>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const pauseButton = document.getElementById('pauseBtn');
-    const audioPlayer = new Audio('songs/Attention- Charlie Puth.mp3');
-    const currentTimeDisplay = document.getElementById('currentTime');
-    const totalDurationDisplay = document.getElementById('totalDuration');
-    const progressBar = document.getElementById('progressBar');
-    const progressBarContainer = document.querySelector('.progress-bar-container');
+  // Get the element
+  const categoryItem = document.getElementById('category-item');
 
-  pauseButton.addEventListener('click', function() {
-        if (isPlaying) {
-            audioPlayer.pause();
-        } else {
-            audioPlayer.play();
-        }
-        isPlaying = !isPlaying; // Toggle isPlaying flag
-        updateButtonAppearance(); // Update button appearance based on play/pause state
-    });
-
-    // Function to update button appearance based on play/pause state
-    function updateButtonAppearance() {
-        pauseButton.classList.toggle('active', isPlaying);
-    }
-
-	let isPlaying = false; // Initially audio is not playing
-    audioPlayer.addEventListener('timeupdate', function() {
-        const currentTime = Math.floor(audioPlayer.currentTime);
-        const duration = Math.floor(audioPlayer.duration);
-        const currentMinutes = Math.floor(currentTime / 60);
-        const currentSeconds = currentTime % 60;
-        const durationMinutes = Math.floor(duration / 60);
-        const durationSeconds = duration % 60;
-        const formattedCurrentTime = currentMinutes + ':' + (currentSeconds < 10 ? '0' : '') + currentSeconds;
-        const formattedTotalDuration = durationMinutes + ':' + (durationSeconds < 10 ? '0' : '') + durationSeconds;
-        currentTimeDisplay.textContent = formattedCurrentTime;
-        totalDurationDisplay.textContent = formattedTotalDuration;
-
-        const progress = (currentTime / duration) * 100;
-        progressBar.style.width = progress + '%';
-    });
-
-    progressBarContainer.addEventListener('click', function(event) {
-        const clickX = event.pageX - this.offsetLeft; // Calculate the position of the click relative to the progress bar container
-        const progressBarWidth = this.offsetWidth;
-        const clickPercentage = (clickX / progressBarWidth);
-        const newTime = clickPercentage * audioPlayer.duration;
-        audioPlayer.currentTime = newTime;
-
-    
-    });
-    const fetchTopTracksBtn = document.getElementById('fetchTopTracksBtn');
-      fetchTopTracksBtn.addEventListener('click', async () => {
-        try {
-          const topTracks = await getTopTracks();
-          displayTopTracks(topTracks);
-        } catch (error) {
-          console.error('Error fetching top tracks:', error);
-        }
-      });
-
-      // Function to display top tracks
-      function displayTopTracks(tracks) {
-        const topTracksContainer = document.createElement('div');
-        topTracksContainer.classList.add('top-tracks');
-
-        tracks.forEach(track => {
-          const trackElement = document.createElement('div');
-          trackElement.classList.add('track');
-          trackElement.innerHTML = `
-            <div class="track-name">${track.name}</div>
-            <div class="track-artists">${track.artists.map(artist => artist.name).join(', ')}</div>
-          `;
-          topTracksContainer.appendChild(trackElement);
-        });
-
-        // Append the top tracks container to the document
-        document.body.appendChild(topTracksContainer);
-      }
+// Add event listeners for mouseenter and mouseleave
+categoryItem.addEventListener('mouseenter', function() {
+    categoryItem.classList.add('App__category-item--selected');
 });
+
+categoryItem.addEventListener('mouseleave', function() {
+    categoryItem.classList.remove('App__category-item--selected');
+});
+
 
 
 </script>
