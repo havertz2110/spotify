@@ -54,6 +54,11 @@ app.get("/payment", function (req, res) {
   res.render("payment");
 });
 
+app.get("/playlist", function (req, res) {
+  res.render("playlist");
+});
+
+
 //Showing login form
 app.get("/login", function (req, res) {
     res.render("login");
