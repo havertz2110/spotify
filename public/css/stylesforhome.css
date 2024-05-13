@@ -445,3 +445,39 @@
 .pause-btn.active::before {
   content: '❚❚'; /* Pause icon */
 }
+
+.horizontal {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.top {
+  display: flex;
+  position: fixed;
+  top: 0;
+  height: 12vh;
+  width: 80vw;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.upgrade {
+  background-color: black;
+  color: white;
+  border: 2px solid grey;
+  width: max-content;
+  font-weight: 550;
+  border-radius: 30px;
+  letter-spacing: 1.5px;
+  font-size: 0.9rem;
+  padding: 0.6rem 2rem;
+}
+
+.upgrade:hover {
+  border: 1px solid white;
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
