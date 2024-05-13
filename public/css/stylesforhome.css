@@ -125,6 +125,14 @@
 .App__song-navigation-prev svg, .App__song-navigation-next svg {
   color: #fff;
 }
+
+.App__song-navigation-prev:hover, .App__song-navigation-next:hover {
+  color: white;
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
+
 .App__user {
   border: 0;
   display: flex;
@@ -481,3 +489,22 @@
   transition: all 0.3s ease;
 }
 
+.circle {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 0 0.65rem;
+  font-size: 2rem;
+  border-radius: 50%;
+}
+
+.fas,
+.underline,
+.progressBar>div {
+    color: grey;
+}
+
+.fas:hover {
+  color: white;
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
