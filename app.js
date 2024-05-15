@@ -76,7 +76,7 @@ app.post("/login", async function(req, res){
         //check if password matches
         const result = req.body.password === user.password;
         if (result) {
-          res.render("main");
+          res.redirect('/main');
         } else {
           res.status(400).json({ error: "password doesn't match" });
         }

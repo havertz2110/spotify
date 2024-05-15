@@ -63,6 +63,11 @@
   align-items: center;
   margin: 5px 0;
 }
+.App__category-item:hover {
+  color: #fff;
+  background-color: rgba(50, 50, 50, 0.6);
+  border-radius: 5px;
+}
 .App__category-item .icon {
   width: 36px;
   height: 36px;
