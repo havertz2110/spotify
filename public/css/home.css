@@ -193,6 +193,11 @@
   align-items: center;
   box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.2);
 }
+.App__quick-link:hover {
+  color: #fff;
+  background-color: rgba(50, 50, 50, 0.6);
+  border-radius: 5px;
+}
 .App__quick-link-featured-img {
   height: 80px;
   width: 80px;
@@ -244,6 +249,11 @@
   background-size: cover;
   margin-bottom: 16px;
   box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.App__section-grid-item:hover {
+  color: #fff;
+  background-color: rgba(50, 50, 50, 0.9);
+  border-radius: 5px;
 }
 .App__section-grid-item:nth-of-type(1) .featured-image {
   background-image: url("https://assets.teenvogue.com/photos/66223f9e036fb67368ccc10a/1:1/w_2014,h_2014,c_limit/The%20Anthology_Cover.jpg");
