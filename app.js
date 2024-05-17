@@ -118,8 +118,6 @@ db.collection('details').insertOne(data,function(err, collection){
 })
 
 
-
-
  
 let port = process.env.PORT || 3000;
 app.listen(port, function () {
