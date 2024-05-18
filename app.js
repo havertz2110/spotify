@@ -102,7 +102,7 @@ app.post("/login", async function(req, res){
   try {
       // check if the user exists
       const detailsCollection = db.collection('details');
-      const user = await detailsCollection.findOne({ email:req.body.email});
+      const user = await detailsCollection.findOne({ username:req.body.username});
      
       if (user) {
      // Lấy salt từ người dùng trong cơ sở dữ liệu
@@ -110,8 +110,8 @@ app.post("/login", async function(req, res){
 
      // Băm mật khẩu nhập vào với salt
      const hashedPassword = crypto.createHmac('sha256', salt).update(req.body.password).digest('hex');
-
-     if (hashedPassword === user.password) {
+      const result = hashedPassword === user.password;
+     if (!result) {
        res.redirect('/main');
         } else {
       
