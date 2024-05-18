@@ -78,6 +78,7 @@ app.post("/login", async function(req, res){
         if (result) {
           res.redirect('/main');
         } else {
+      
           res.status(400).json({ error: "password doesn't match" });
         }
       } else {
