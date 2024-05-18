@@ -62,6 +62,11 @@ app.get("/register", function (req, res) {
   res.render("register");
 });
 
+//Showing login form
+app.get("/login", function (req, res) {
+  res.render("login");
+});
+
 
 //handling user sign up
 app.post('/register', function(req,res){
@@ -84,11 +89,6 @@ db.collection('details').insertOne(data,function(err, collection){
 return  res.render("register_success");
 })
 
-
-//Showing login form
-app.get("/login", function (req, res) {
-    res.render("login");
-});
 
 
 //Handling user login
