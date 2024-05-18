@@ -6,7 +6,7 @@ const express = require("express"),
         require("passport-local-mongoose")
 const User = require("./model/user");
 let app = express();
- 
+const crypto = require('crypto');
 app.use(express.static(__dirname + '/public'));
 
 const mongoose = require('mongoose');
