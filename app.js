@@ -74,12 +74,18 @@ var name = req.body.name;
 var email =req.body.email;
 var phone =req.body.phone;
 var pass = req.body.password;
+// Tạo salt
+const salt = crypto.randomBytes(16).toString('hex');
 
+// Băm mật khẩu với salt
+const hashedPassword = crypto.createHmac('sha256', salt).update(pass).digest('hex');
 var data = {
   "name": name,
   "email":email,
   "phone":phone,
-  "password":pass
+  // "password": pass,
+  "password": hashedPassword,
+  "salt": salt
 }
 db.collection('details').insertOne(data,function(err, collection){
   if (err) throw err;
@@ -96,13 +102,17 @@ app.post("/login", async function(req, res){
   try {
       // check if the user exists
       const detailsCollection = db.collection('details');
-      const user = await detailsCollection.findOne({ username: req.body.username });
+      const user = await detailsCollection.findOne({ email:req.body.email});
      
       if (user) {
-        //check if password matches
-        const result = req.body.password === user.password;
-        if (result) {
-          res.redirect('/main');
+     // Lấy salt từ người dùng trong cơ sở dữ liệu
+     const salt = user.salt;
+
+     // Băm mật khẩu nhập vào với salt
+     const hashedPassword = crypto.createHmac('sha256', salt).update(req.body.password).digest('hex');
+
+     if (hashedPassword === user.password) {
+       res.redirect('/main');
         } else {
       
           res.status(400).json({ error: "password doesn't match" });
