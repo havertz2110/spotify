@@ -57,6 +57,32 @@ app.get("/payment", function (req, res) {
 app.get("/playlist", function (req, res) {
   res.render("playlist");
 });
+// Showing signup form
+app.get("/register", function (req, res) {
+  res.render("register");
+});
+
+
+//handling user sign up
+app.post('/register', function(req,res){
+var name = req.body.name;
+var email =req.body.email;
+var phone =req.body.phone;
+var pass = req.body.password;
+
+var data = {
+  "name": name,
+  "email":email,
+  "phone":phone,
+  "password":pass
+}
+db.collection('details').insertOne(data,function(err, collection){
+  if (err) throw err;
+  console.log("Record inserted Successfully");
+    
+});
+return  res.render("register_success");
+})
 
 
 //Showing login form
@@ -96,32 +122,6 @@ app.get("/main", function (req, res) {
 
 
 
-// Showing signup form
-app.get("/register", function (req, res) {
-    res.render("register");
-});
-
-
-//handling user sign up
-app.post('/register', function(req,res){
-	var name = req.body.name;
-	var email =req.body.email;
-	var phone =req.body.phone;
-	var pass = req.body.password;
-
-	var data = {
-		"name": name,
-		"email":email,
-		"phone":phone,
-		"password":pass
-	}
-db.collection('details').insertOne(data,function(err, collection){
-		if (err) throw err;
-		console.log("Record inserted Successfully");
-			
-	});
-	return  res.render("register_success");
-})
 
 
 
