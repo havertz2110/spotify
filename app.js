@@ -103,6 +103,10 @@ app.get("/login", function (req, res) {
   res.render("login");
 });
 
+//showing shazam
+app.get("/shazam", function (req, res) {
+  res.render("shazam");
+});
 
 //handling user sign up
 app.post('/register', function(req,res){
@@ -138,7 +142,7 @@ app.post("/login", async function(req, res){
   try {
       // check if the user exists
       const detailsCollection = db.collection('details');
-      const user = await detailsCollection.findOne({ username:req.body.username});
+      const user = await detailsCollection.findOne({ name:req.body.name});
      
       if (user) {
      // Lấy salt từ người dùng trong cơ sở dữ liệu
@@ -147,13 +151,14 @@ app.post("/login", async function(req, res){
      // Băm mật khẩu nhập vào với salt
      const hashedPassword = crypto.createHmac('sha256', salt).update(req.body.password).digest('hex');
       const result = hashedPassword === user.password;
-     if (!result) {
+     if (result) {
        res.redirect('/main');
         } else {
       
           res.status(400).json({ error: "password doesn't match" });
         }
-      } else {
+      } 
+      else {
         res.status(400).json({ error: "User doesn't exist" });
       }
     } catch (error) {
@@ -183,7 +188,6 @@ const search = async (query) => {
   }
 }
 //
-
 
 
 
