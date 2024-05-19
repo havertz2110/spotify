@@ -49,7 +49,7 @@ passport.deserializeUser(User.deserializeUser());
 
 // Showing home page
 app.get("/", function (req, res) {
-    res.render("home1");
+    res.render("home");
 });
 
 // Showing payment page
