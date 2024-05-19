@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Comparison</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        .comparison-table th {
+            background-color: #f2f2f2;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .comparison-table tr:hover {
+            background-color: #e2e2e2;
+        }
+        .comparison-table .feature {
+            text-align: left;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Compare Free and Subscription Accounts</h1>
+        <table class="comparison-table">
+            <tr>
+                <th>Feature</th>
+                <th>Free Account</th>
+                <th>Subscription Account</th>
+            </tr>
+            <tr>
+                <td class="feature">Storage</td>
+                <td>5 GB</td>
+                <td>100 GB</td>
+            </tr>
+            <tr>
+                <td class="feature">Customer Support</td>
+                <td>Email support only</td>
+                <td>24/7 Phone and Email support</td>
+            </tr>
+            <tr>
+                <td class="feature">Ads</td>
+                <td>Displayed</td>
+                <td>No Ads</td>
+            </tr>
+            <tr>
+                <td class="feature">Access to Premium Content</td>
+                <td>Limited</td>
+                <td>Full</td>
+            </tr>
+            <tr>
+                <td class="feature">Download Speed</td>
+                <td>Standard</td>
+                <td>High</td>
+            </tr>
+            <tr>
+                <td class="feature">Customizable Themes</td>
+                <td>No</td>
+                <td>Yes</td>
+            </tr>
+        </table>
+        <div style="text-align: center;">
+            <a href="#subscribe" class="btn">Upgrade to Subscription</a>
+        </div>
+    </div>
+</body>
+</html>
