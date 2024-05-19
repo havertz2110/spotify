@@ -51,6 +51,21 @@ passport.deserializeUser(User.deserializeUser());
 //=====================
 
 
+async function getToken() {
+  const response = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    body: new URLSearchParams({
+      'grant_type': 'client_credentials',
+    }),
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Basic ' + (Buffer.from(client_id + ':' + client_secret).toString('base64')),
+    },
+  });
+
+  const data = await response.json();
+  return data.access_token;
+}
 
 
 
