@@ -2,7 +2,6 @@ from __future__ import division
 import hashlib
 import numpy as np
 import matplotlib.mlab as mlab
-from termcolor import colored
 from scipy.ndimage.filters import maximum_filter
 from scipy.ndimage.morphology import (generate_binary_structure, iterate_structure, binary_erosion)
 from operator import itemgetter

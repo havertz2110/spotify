@@ -1,12 +1,10 @@
 import os
-import sys
-import src
 import src.analyzer as analyzer
 from src.filereader import FileReader
 from termcolor import colored
 from src.db import SQLiteDatabase
 
-MUSICS_FOLDER_PATH = "mp3/"
+MUSICS_FOLDER_PATH = "shazam/mp3/"
 
 if __name__ == '__main__':
   db = SQLiteDatabase()
