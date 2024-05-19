@@ -78,6 +78,8 @@ app.get("/shazam", function (req, res) {
 app.get("/subscription", function (req, res) {
   res.render("subscription");
 });
+
+
 //handling user sign up
 app.post('/register', function(req,res){
 var name = req.body.name;
