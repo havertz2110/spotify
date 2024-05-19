@@ -8,13 +8,7 @@ const User = require("./model/user");
 let app = express();
 const crypto = require('crypto');
 app.use(express.static(__dirname + '/public'));
-const http = require('http');
-const fetch = require('node-fetch');
-const fs = require('fs');
-const path = require('path');
 
-const client_id = 'e65ad95dae4045be8a9ae3ae90c9c8d4';
-const client_secret = 'bca74f5b89984c2eaf0de643a2644cab';
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://22520039:JaVHhoJmN7iHt9Sr@scopify.9dlayjt.mongodb.net/users');
 
@@ -49,26 +43,6 @@ passport.deserializeUser(User.deserializeUser());
 //=====================
 // ROUTES
 //=====================
-
-
-async function getToken() {
-  const response = await fetch('https://accounts.spotify.com/api/token', {
-    method: 'POST',
-    body: new URLSearchParams({
-      'grant_type': 'client_credentials',
-    }),
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Basic ' + (Buffer.from(client_id + ':' + client_secret).toString('base64')),
-    },
-  });
-
-  const data = await response.json();
-  return data.access_token;
-}
-
-
-
 
 // Showing home page
 app.get("/", function (req, res) {
