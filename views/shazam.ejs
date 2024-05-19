@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Playlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f7f7f7;
+        }
+        .playlist-header, .track-list {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .playlist-header {
+            display: flex;
+            align-items: center;
+        }
+        .playlist-header img {
+            border-radius: 10px;
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+        }
+        .playlist-info {
+            max-width: 600px;
+        }
+        .playlist-info h1 {
+            margin: 0 0 10px;
+            font-size: 24px;
+        }
+        .playlist-info p {
+            margin: 5px 0;
+        }
+        .track-list h2 {
+            margin: 0 0 20px;
+            font-size: 20px;
+        }
+        .track {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .track img {
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+        .track-info {
+            max-width: 600px;
+        }
+        .track-info h3 {
+            margin: 0 0 5px;
+            font-size: 18px;
+        }
+        .track-info p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="playlist-header">
+        <img src="https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da848d0ce13d55f634e290f744ba" alt="Playlist Image">
+        <div class="playlist-info">
+            <h1>Spotify Web API Testing playlist</h1>
+            <p><strong>Owner:</strong> <a href="https://open.spotify.com/user/jmperezperez">JMPerez²</a></p>
+            <p><strong>Followers:</strong> 754</p>
+            <p><strong>Public:</strong> Yes</p>
+            <p><a href="https://open.spotify.com/playlist/3cEYpjA9oz9GiPac4AsH4n">Open in Spotify</a></p>
+        </div>
+    </div>
+
+    <div class="track-list">
+        <h2>Tracks</h2>
+        <div class="track">
+            <img src="https://i.scdn.co/image/ab67616d0000b273ce6d0eef0c1ce77e5f95bbbc" alt="Album Image">
+            <div class="track-info">
+                <h3><a href="https://open.spotify.com/track/4rzfv0JLZfVhOhbSQ8o5jZ">Api</a></h3>
+                <p>Artist: <a href="https://open.spotify.com/artist/6eSdhw46riw2OUHgMwR8B5">Odiseo</a></p>
+                <p>Album: <a href="https://open.spotify.com/album/2pANdqPvxInB0YvcDiw4ko">Progressive Psy Trance Picks Vol.8</a></p>
+                <p>Added at: 2015-01-15T12:39:22Z</p>
+            </div>
+        </div>
+        <div class="track">
+            <img src="https://i.scdn.co/image/ab67616d0000b273aa2ff29970d9a63a49dfaeb2" alt="Album Image">
+            <div class="track-info">
+                <h3><a href="https://open.spotify.com/track/5o3jMYOSbaVz3tkgwhELSV">Is</a></h3>
+                <p>Artist: <a href="https://open.spotify.com/artist/5VQE4WOzPu9h3HnGLuBoA6">Vlasta Marek</a></p>
+                <p>Album: <a href="https://open.spotify.com/album/6nlfkk5GoXRL1nktlATNsy">Wellness & Dreaming Source</a></p>
+                <p>Added at: 2015-01-15T12:40:03Z</p>
+            </div>
+        </div>
+        <div class="track">
+            <img src="https://i.scdn.co/image/ab67616d0000b273ee0d0dce888c6c8a70db6e8b" alt="Album Image">
+            <div class="track-info">
+                <h3><a href="https://open.spotify.com/track/0I6h0Qagx9K7AA79K0aCOH">Dance Yrself Clean</a></h3>
+                <p>Artist: <a href="https://open.spotify.com/artist/066X20Nz7iquqkkCW6Jxy6">LCD Soundsystem</a></p>
+                <p>Album: <a href="https://open.spotify.com/album/4hnqM0JK4CM1phwfq1Ldyz">This Is Happening</a></p>
+                <p>Added at: 2015-01-15T12:22:30Z</p>
+            </div>
+        </div>
+        <!-- Add more tracks as needed -->
+    </div>
+</body>
+</html>
