@@ -101,7 +101,7 @@
         </div>
       </div>
       <div style="padding-bottom: 0px;" class="App__nav-bar">
-        <a href="/"><img class="App__logo" src="img/logo.png" alt="Error"></a>
+        <a href="/main"><img class="App__logo" src="img/logo.png" alt="Error"></a>
             <div class="App__categories-nav">
               <div class="App__category-item App__category-item--selected" onclick="location.href='/main';">
                 <div class="icon"><svg viewBox="0 0 576 512" width="100" title="home">
@@ -173,7 +173,7 @@
       <span class="close" id="closeModal">&times;</span>
       <h2>Identify Song</h2>
       <button id="startRecording" class="btn">Listen</button>
-      <p id="countdownTimer" style="font-size: 24px; color: #1ED760; padding: 10px 20px;">10s</p>
+      <p id="countdownTimer" style="font-size: 24px; color: #1ED760; padding: 10px 20px;"></p>
       <h3 id="song"></h3>
     </div>
   </div>
@@ -187,30 +187,43 @@
       closeRecordModal();
     });
     
+    let countdownInterval;
+    let identificationTimeout;
+    
     function showRecordModal() {
       document.getElementById('recordModal').style.display = 'flex';
     }
     
     function closeRecordModal() {
       document.getElementById('recordModal').style.display = 'none';
+      resetModal();
+    }
+    
+    function resetModal() {
+      document.getElementById('song').innerText = '';
+      document.getElementById('countdownTimer').innerText = '10s';
+      clearInterval(countdownInterval);
+      clearTimeout(identificationTimeout);
     }
     
     document.getElementById('startRecording').addEventListener('click', async function() {
+      resetModal();
       document.getElementById('song').innerText = 'Listening...';
+    
       // Initialize countdown
       let remainingTime = 10; // seconds
       document.getElementById('countdownTimer').innerText = remainingTime + 's';
     
-      const countdownInterval = setInterval(() => {
+      countdownInterval = setInterval(() => {
         remainingTime--;
         document.getElementById('countdownTimer').innerText = remainingTime + 's';
         if (remainingTime <= 0) {
           clearInterval(countdownInterval);
         }
       }, 1000); // Update the countdown every second
-
+    
       // Start recording and identifying song after countdown
-      setTimeout(async () => {
+      identificationTimeout = setTimeout(async () => {
         document.getElementById('song').innerText = 'Analyzing...';
         try {
           const response = await fetch('/identify-song', {
