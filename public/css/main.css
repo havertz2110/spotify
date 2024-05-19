@@ -134,12 +134,12 @@
 }
 .App__user {
   border: 0;
-  display: flex;
-  flex-direction: row;
+  
   align-items: center;
+  justify-content: center; /* Added to align content horizontally */
   height: 32px;
-  border-radius: 16px;
-  padding: 1px;
+  border-radius: 50px;
+  padding: 5px;
   background-color: #000;
 }
 .App__figure {
