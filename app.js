@@ -1,10 +1,13 @@
-const express = require("express"),
-    passport = require("passport"),
-    bodyParser = require("body-parser"),
-    LocalStrategy = require("passport-local"),
-    passportLocalMongoose = 
-        require("passport-local-mongoose")
-const User = require("./model/user");
+const express = require('express');
+const passport = require('passport');
+const bodyParser = require('body-parser');
+const LocalStrategy = require('passport-local');
+const passportLocalMongoose = require('passport-local-mongoose');
+const User = require('./model/user');
+const multer = require('multer');
+const { exec } = require('child_process');
+const fs = require('fs');
+const path = require('path');
 let app = express();
 const crypto = require('crypto');
 app.use(express.static(__dirname + '/public'));
@@ -135,6 +138,18 @@ app.get("/main", function (req, res) {
 });
 
 
+// Route to handle recording and identifying song
+app.post('/identify-song', (req, res) => {
+  const scriptPath = path.join(__dirname, 'shazam', 'listen.py');
+
+  exec(`python ${scriptPath}`, (error, stdout, stderr) => {
+      if (error) {
+          console.error(`exec error: ${error}`);
+          return res.status(500).json({ error: `Error identifying song: ${stderr}` });
+      }
+      res.json({ song: stdout.trim() });
+  });
+});
 
 
 

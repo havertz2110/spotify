@@ -1,27 +1,13 @@
-import os
-import sys
-import src
 import src.analyzer as analyzer
-import argparse
 
-from argparse import RawTextHelpFormatter
 from itertools import zip_longest
-from termcolor import colored
 from src.listener import Listener
 from src.db import SQLiteDatabase
 
 if __name__ == '__main__':
   db = SQLiteDatabase()
 
-  parser = argparse.ArgumentParser(formatter_class=RawTextHelpFormatter)
-  parser.add_argument('-s', '--seconds', nargs='?')
-  args = parser.parse_args()
-
-  if not args.seconds:
-    print (colored("Warning: You don't set any second. It's 10 by default", "yellow"))
-    args.seconds = "10"
-
-  seconds = int(args.seconds)
+  seconds = 10
 
   chunksize = 2**12
   channels = 1
@@ -36,7 +22,6 @@ if __name__ == '__main__':
 
   while True:
     bufferSize = int(listener.rate / listener.chunksize * seconds)
-    print (colored("Listening....","green"))
 
     for i in range(0, bufferSize):
       nums = listener.process_recording()
@@ -44,8 +29,6 @@ if __name__ == '__main__':
     if not record_forever: break
 
   listener.stop_recording()
-
-  print (colored('Okey, enough', attrs=['dark']))
 
   def grouper(iterable, n, fillvalue=None):
     args = [iter(iterable)] * n
@@ -55,7 +38,6 @@ if __name__ == '__main__':
   data = listener.get_recorded_data()
 
   msg = 'Took %d samples'
-  print(colored(msg, attrs=['dark']) % len(data[0]))
 
   Fs = analyzer.DEFAULT_FS
   channel_amount = len(data)
@@ -83,12 +65,6 @@ if __name__ == '__main__':
       length = len(vals)
       query = query % ', '.join('?' * length)
       x = db.executeAll(query, values=vals)
-      matches_found = len(x)
-      if matches_found > 0:
-        msg = 'I found %d hash in db'
-        print (colored(msg, 'green') % (
-          matches_found
-        ))
 
       for hash, sid, offset in x:
         yield (sid, mapper[hash])
@@ -136,19 +112,12 @@ if __name__ == '__main__':
   total_matches_found = len(matches)
 
   if total_matches_found > 0:
-    
-    msg = 'Totally found %d hash'
-    print (colored(msg, 'green') % total_matches_found)
 
     song = align_matches(matches)
+    
+    songName, artist = (song['SONG_NAME'].split('.')[0]).split('-')
 
-    msg = ' => song: %s (id=%d)\n'
-    msg += '    offset: %d (%d secs)\n'
-
-    print (colored(msg, 'green') % (
-      song['SONG_NAME'], song['SONG_ID'],
-      song['OFFSET'], song['OFFSET_SECS']
-    ))
+    print('Song name:', songName)
+    print('Artist:', artist)
   else:
-    msg = 'Not anything matching'
-    print (colored(msg, 'red'))
+    print('No song matching')
