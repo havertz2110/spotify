@@ -1,9 +1,34 @@
-const express = require("express"),
-    passport = require("passport"),
-    bodyParser = require("body-parser"),
-    LocalStrategy = require("passport-local"),
-    passportLocalMongoose = 
-        require("passport-local-mongoose")
+const express = require("express"), 
+      passport = require("passport"), //thư viện Passport.js, một middleware xác thực người dùng cho Node.js
+      bodyParser = require("body-parser"), //thư viện body-parser, giúp phân tích cú pháp các yêu cầu HTTP đến với payload là JSON hoặc URL-encoded
+      LocalStrategy = require("passport-local"),
+      passportLocalMongoose = require("passport-local-mongoose")
+
+//
+const axios = require('axios');
+const qs = require('qs');
+const clientId = 'c97357a5eaff4fb984809b2c766159b1';
+const clientSecret = '859efe96b2834a77b759d3a755d7347d';
+const auth = 'Basic ' + Buffer.from(clientId + ':' + clientSecret).toString('base64');
+let token = '';
+const getToken = async () => {
+  try {
+    const response = await axios({
+      method: 'post',
+      url: 'https://accounts.spotify.com/api/token',
+      data: qs.stringify({grant_type: 'client_credentials'}),
+      headers: {
+        'Authorization': auth,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
+    token = response.data.access_token;
+    console.log('Token:', token); // Log để kiểm tra token
+  } catch (error) {
+    console.error('Error in getToken:', error.response ? error.response.data : error.message);}
+};
+//
+        
 const User = require("./model/user");
 let app = express();
 const crypto = require('crypto');
@@ -47,6 +72,17 @@ passport.deserializeUser(User.deserializeUser());
 // Showing home page
 app.get("/", function (req, res) {
     res.render("home");
+});
+
+app.get('/search', async (req, res) => {
+  const query = req.query.q;
+  if (!query) {
+    return res.render("search");
+  }
+  await getToken();
+  const data = await search(query);
+  // res.render("search", { data });
+  res.json(data); // Trả về dữ liệu dạng JSON
 });
 
 // Showing payment page
@@ -129,9 +165,24 @@ app.get("/main", function (req, res) {
   res.render("main");
 });
 
-
-
-
+//
+const search = async (query) => {
+  try {
+    const response = await axios({
+      method: 'get',
+      url: `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track,artist,album`,
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      }
+    });
+    console.log('Search Response:', response.data); // Log để kiểm tra dữ liệu trả về
+    return response.data;
+  } catch (error) {
+    console.error('Error in search:', error.response ? error.response.data : error.message);
+  }
+}
+//
 
 
 
