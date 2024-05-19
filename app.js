@@ -21,6 +21,28 @@ db.once('open', function(callback){
 	console.log("connection succeeded");
 })
 
+const axios = require('axios');
+const qs = require('qs');
+const clientId = 'c97357a5eaff4fb984809b2c766159b1';
+const clientSecret = '859efe96b2834a77b759d3a755d7347d';
+const auth = 'Basic ' + Buffer.from(clientId + ':' + clientSecret).toString('base64');
+let token = '';
+const getToken = async () => {
+  try {
+    const response = await axios({
+      method: 'post',
+      url: 'https://accounts.spotify.com/api/token',
+      data: qs.stringify({grant_type: 'client_credentials'}),
+      headers: {
+        'Authorization': auth,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
+    token = response.data.access_token;
+    console.log('Token:', token); // Log để kiểm tra token
+  } catch (error) {
+    console.error('Error in getToken:', error.response ? error.response.data : error.message);}
+};
 
 app.set("view engine", "ejs");
 app.use(require("express-session")({
@@ -79,6 +101,16 @@ app.get("/subscription", function (req, res) {
   res.render("subscription");
 });
 
+app.get('/search', async (req, res) => {
+  const query = req.query.q;
+  if (!query) {
+    return res.render("search");
+  }
+  await getToken();
+  const data = await search(query);
+  // res.render("search", { data });
+  res.json(data); // Trả về dữ liệu dạng JSON
+});
 
 //handling user sign up
 app.post('/register', function(req,res){
@@ -156,7 +188,22 @@ app.post('/identify-song', (req, res) => {
   });
 });
 
-
+const search = async (query) => {
+  try {
+    const response = await axios({
+      method: 'get',
+      url: `https://api.spotify.com/v1/search?q=${encodeURIComponent(query)}&type=track,artist,album`,
+      headers: {
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      }
+    });
+    console.log('Search Response:', response.data); // Log để kiểm tra dữ liệu trả về
+    return response.data;
+  } catch (error) {
+    console.error('Error in search:', error.response ? error.response.data : error.message);
+  }
+}
 
 
 
