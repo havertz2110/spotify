@@ -112,6 +112,17 @@ app.get('/search', async (req, res) => {
   res.json(data); // Trả về dữ liệu dạng JSON
 });
 
+app.get('/logged_in_search', async (req, res) => {
+  const query = req.query.q;
+  if (!query) {
+    return res.render("logged_in_search");
+  }
+  await getToken();
+  const data = await search(query);
+  // res.render("search", { data });
+  res.json(data); // Trả về dữ liệu dạng JSON
+});
+
 //handling user sign up
 app.post('/register', function(req,res){
 var name = req.body.name;
@@ -198,7 +209,7 @@ const search = async (query) => {
         'Content-Type': 'application/json'
       }
     });
-    console.log('Search Response:', response.data); // Log để kiểm tra dữ liệu trả về
+    // console.log('Search Response:', response.data); // Log để kiểm tra dữ liệu trả về
     return response.data;
   } catch (error) {
     console.error('Error in search:', error.response ? error.response.data : error.message);

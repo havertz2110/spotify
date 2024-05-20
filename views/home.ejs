@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="App__playlists-nav">
-          <div class="App__category-item" onclick="location.href='';">
+          <div  id="Create Playlist" class="App__category-item">
             <div class="icon">
               <svg role="img" height="12" width="12" aria-hidden="true" viewBox="0 0 16 16" fill="#c4c4c4">
                 <path d="M14 7H9V2H7v5H2v2h5v5h2V9h5z"></path>
@@ -181,6 +181,10 @@
 
     <script>
       document.getElementById('shazam').addEventListener('click', function() {
+        showNotification('Please log in to use!');
+      });
+
+      document.getElementById('Create Playlist').addEventListener('click', function() {
         showNotification('Please log in to use!');
       });
 
