@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Scopify</title>
+    <title>Scopify - Search</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/search.css" />
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -75,6 +74,7 @@
         margin-top: 20px;
       }
     </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="App">
@@ -122,20 +122,12 @@
       <div class="App__main-view">
         <div class="App__top-gradient"></div>
         <div class="App__header-placeholder"></div>
-                <section class="App__section App__your-shows">
-          <div class="App__section-header">
-            <h3>Songs that u might want to hear</h3>
-          </div>   
-          <div class="App__section-grid-item">
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7cFrSZHyymRexzvwFcavUv?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO3FbsUG?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcsaYbfSVQu5?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6AO1D5zV7YbsGPUEy09Bwg?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> 
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2XT8IQUW3S9vyYKauILhoP?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0W29VhunJ4cBlhz7gG5YDJ?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0os4okaOVdC4qhwcwGBcZ7?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>          
-        </div>        
-        </section>
+        <h1 style="color: white;">Search</h1>
+        <form id="search-form">
+          <input type="text" id="query" placeholder="What do you want to play?" style="background-color: #242424; color: white;">
+          <button type="submit">Search</button>
+        </form>
+        <div id="results" style="color: white;"></div>
       </div>
     </div>
     <!-- Modal for recording audio -->
@@ -162,6 +154,38 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    $('#search-form').on('submit', function(e) {
+        e.preventDefault();
+        var query = $('#query').val();
+        $.get('/search?q=' + encodeURIComponent(query), function(data) {
+            //console.log('Search Data:', data); // Log để kiểm tra dữ liệu trả về trên frontend
+            $('#results').empty();
+            
+            // Kiểm tra nếu có dữ liệu tracks
+            if (data.tracks && data.tracks.items.length > 0) {
+                data.tracks.items.forEach(track => {
+                    $('#results').append('<p><b>Track:</b> ' + track.name + ' by ' + track.artists.map(artist => artist.name).join(', ') + '</p>');
+                });
+            }
+
+            // Kiểm tra nếu có dữ liệu artists
+            if (data.artists && data.artists.items.length > 0) {
+                data.artists.items.forEach(artist => {
+                    $('#results').append('<p><b>Artist:</b> ' + artist.name + '</p>');
+                });
+            }
+
+            // Kiểm tra nếu có dữ liệu albums
+            if (data.albums && data.albums.items.length > 0) {
+                data.albums.items.forEach(album => {
+                    $('#results').append('<p><b>Album:</b> ' + album.name + ' by ' + album.artists.map(artist => artist.name).join(', ') + '</p>');
+                });
+            }
+        });
+    });
+</script>
   
   <script>
     document.getElementById('shazam').addEventListener('click', function() {
