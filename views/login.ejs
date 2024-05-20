@@ -114,12 +114,14 @@
         <h1 class="logo">Scopify</h1>
         <h2>Log in to Scopify</h2>
         <form action="/login" method="post">
-            <input type="text" name="username" id="username"
-            placeholder="username">
+            <input type="text" name="name" id="name"
+            placeholder="Name">
 
             <input type="password" name="password"
-                placeholder="password">
+            id="password" placeholder="Password " required/><br>
+            
             <button class="button">login</button>
+            
         </form>
         <!--<a href="#" class="forgot-password">Quên mật khẩu?</a>-->
         <div class="signup">Don't have an account? <a href="/register">Sign up here</a></div>

@@ -115,8 +115,6 @@ app.get('/search', async (req, res) => {
 //handling user sign up
 app.post('/register', function(req,res){
 var name = req.body.name;
-var email =req.body.email;
-var phone =req.body.phone;
 var pass = req.body.password;
 // Tạo salt
 const salt = crypto.randomBytes(16).toString('hex');
@@ -125,8 +123,6 @@ const salt = crypto.randomBytes(16).toString('hex');
 const hashedPassword = crypto.createHmac('sha256', salt).update(pass).digest('hex');
 var data = {
   "name": name,
-  "email":email,
-  "phone":phone,
   // "password": pass,
   "password": hashedPassword,
   "salt": salt

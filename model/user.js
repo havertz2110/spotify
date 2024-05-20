@@ -5,15 +5,9 @@ var User = new Schema({
     username: {
         type: String
     },
-    email: {
-        type: String
-    },
     password: {
         type: String
-    },
-    phone:{
-        type: String
-    },
+    }
 })
  
 User.plugin(passportLocalMongoose);
