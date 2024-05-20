@@ -23,6 +23,7 @@
   scrollbar-width: none;
   font-size: 16px;
 }
+
 .App::-webkit-scrollbar {
   display: none;
 }
@@ -96,10 +97,14 @@
   position: relative;
   z-index: 1;
   max-height: calc(100vh - var(--now-playing-bar-height));
-  /* - var(--now-playing-bar-height) */
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: none;
+}
+@media (max-width: 375px) {
+  .App__main-view {
+    width: 375px; /* Ensure it covers the full width */
+  }
 }
 .App__main-view::-webkit-scrollbar {
   display: none;
