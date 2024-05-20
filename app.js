@@ -163,17 +163,17 @@ app.post("/login", async function(req, res){
      const hashedPassword = crypto.createHmac('sha256', salt).update(req.body.password).digest('hex');
       const result = hashedPassword === user.password;
      if (result) {
-       res.redirect('/main');
+      return res.json({success: true});
         } else {
       
-          res.status(400).json({ error: "password doesn't match" });
+          return res.json({ error: "Password doesn't match" });
         }
       } 
       else {
-        res.status(400).json({ error: "User doesn't exist" });
+        return res.json({ error: "User doesn't exist" });
       }
     } catch (error) {
-      res.status(400).json({ error });
+      return res.json({ error });
     }
 });
 

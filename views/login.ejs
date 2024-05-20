@@ -113,18 +113,45 @@
     <div class="container">
         <h1 class="logo">Scopify</h1>
         <h2>Log in to Scopify</h2>
-        <form action="/login" method="post">
-            <input type="text" name="name" id="name"
-            placeholder="Name">
-
-            <input type="password" name="password"
-            id="password" placeholder="Password " required/><br>
-            
-            <button class="button">login</button>
-            
+        <form id="loginForm">
+            <input type="text" name="name" id="name" placeholder="Name">
+            <input type="password" name="password" id="password" placeholder="Password" required><br>
+            <button type="submit" class="button">Login</button>
         </form>
-        <!--<a href="#" class="forgot-password">Quên mật khẩu?</a>-->
+        <h4 id="resultMessage"></h4>
         <div class="signup">Don't have an account? <a href="/register">Sign up here</a></div>
     </div>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const password = document.getElementById('password').value;
+            const resultMessage = document.getElementById('resultMessage');
+
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, password })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    resultMessage.style.color = 'green';
+                    resultMessage.textContent = 'Login successful!';
+                    window.location.href = '/main'; 
+                } else {
+                    resultMessage.style.color = 'red';
+                    resultMessage.textContent = data.error;
+                }
+            } catch (error) {
+                resultMessage.style.color = 'red';
+                resultMessage.textContent = 'An error occurred during login.';
+            }
+        });
+    </script>
 </body>
 </html>
