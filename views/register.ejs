@@ -55,15 +55,22 @@
             font-size: 16px;
         }
 
-        .button {
-            background-color: #1ed760;
+        .button{
+            width: 250px;
+            height: 40px;
+            margin: 10px auto;
+            justify-content: center;
+            display: block;
             color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 18px;
+            background: #1ED760;
+            font-size: 1em;
+            font-weight: bold;
             margin-top: 20px;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: .5s ease-in-out;
         }
 
         .button:hover {
@@ -143,7 +150,7 @@
                              
             
 
-            <input type="submit" id="submitDetails" 
+            <input class="button" type="submit" id="submitDetails" 
             name="submitDetails" value="Submit" /><br>
                      
         </form>
