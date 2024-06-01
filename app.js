@@ -11,7 +11,8 @@ const path = require('path');
 let app = express();
 const crypto = require('crypto');
 app.use(express.static(__dirname + '/public'));
-
+var compression = require('compression')
+app.use(compression())
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://22520039:JaVHhoJmN7iHt9Sr@scopify.9dlayjt.mongodb.net/users');
 
